@@ -1,4 +1,4 @@
-NAME=powerpc-plugin
+NAME=powerpc-plugin-disasm
 R2_PLUGIN_PATH=$(shell r2 -hh|grep LIBR_PLUGINS|awk '{print $$2}')
 CFLAGS=-pedantic -Wall -Wextra -std=gnu99 -pipe -Os -fPIC $(shell pkg-config --cflags r_asm)
 LDFLAGS=-shared $(shell pkg-config --libs r_asm)
@@ -14,8 +14,10 @@ clean:
 $(LIB): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(LIB)
 
-install:
+install: all
 	cp -f $(NAME).$(SO_EXT) $(R2_PLUGIN_PATH)
 
 uninstall:
 	rm -f $(R2_PLUGIN_PATH)/$(NAME).$(SO_EXT)
+
+.PHONY: all clean install uninstall

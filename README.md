@@ -4,6 +4,8 @@ radare-powerpc
 ## References
 [radare2: Implementing a new architecture](https://github.com/radare/radare2/wiki/Implementing-a-new-architecture)
 
+[radare2: Implementing a new analysis plugin](https://github.com/radare/radare2/wiki/Implementing-a-new-analysis-plugin)
+
 [Programming Environments Manual for 32-Bit Implementations of the PowerPC(TM) Architecture](http://cache.nxp.com/files/product/doc/MPCFPE32B.pdf)
 
 [MPCxxx Instruction SetMPCxxx Instruction Set](https://cache.freescale.com/files/product/doc/MPC82XINSET.pdf)
