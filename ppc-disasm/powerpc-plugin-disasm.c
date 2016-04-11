@@ -36,7 +36,7 @@ static void decode_b_form(uint32_t i, uint32_t pc, char *s)
 		pc = pc + (int32_t)tmp;
 		snprintf(s, R_ASM_BUFSIZE, "bcl %i, %i, 0x%x", bo, bi, pc);
 		break;
-	
+
 	/* bca */
 	case 0x2:
 		snprintf(s, R_ASM_BUFSIZE, "bca %i, %i, 0x%x", bo, bi, tmp);
@@ -438,37 +438,37 @@ static int disassemble(RAsm *a, RAsmOp *op, const ut8 *buf, int len)
 	case FORM_INV:
 		/* invalid instruction */
 		break;
-	
+
 	case FORM_B:
 		/* conditional branch instructions */
 		decode_b_form(i, pc, op->buf_asm);
 		return 4;
 		break;
-	
+
 	case FORM_D:
 		decode_d_form(i, prim_opcode, op->buf_asm);
 		return 4;
 		break;
-	
+
 	case FORM_I:
 		/* branch instructions */
 		decode_i_form(i, pc, op->buf_asm);
 		return 4;
 		break;
-	
+
 	case FORM_M:
 		/* rotate and shift instructions */
 		decode_m_form(i, prim_opcode, op->buf_asm);
 		return 4;
 		break;
-	
+
 	case FORM_SC:
 		/* sc instruction */
 		snprintf(op->buf_asm, R_ASM_BUFSIZE, "%s",
 		         instructions[prim_opcode].mnemonic);
 		return 4;
 		break;
-	
+
 	case FORM_X:
 		found = 0;
 		for (k = 0; k < sizeof instructions_x/sizeof(struct INSTR_X); ++k) {
